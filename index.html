@@ -14,6 +14,8 @@
   </head>
   <body>
     <h1>Generate PlayLists</h1>
+    <button class="btn btn-primary align-middle">Load Albums</button>
+
     <div class="container">
       <div class="row"></div>
     </div>
@@ -38,7 +40,7 @@
       };
       const playlists = () => {
         fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=pink%20floyd",
+          "https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem",
           options
         )
           .then((response) => response.json())
@@ -47,18 +49,18 @@
 
             const grid = document.querySelector(".container > .row");
 
-            for (let i = 0; i < playlist.length; i++) {
-              const song = playlist[i];
+            for (let i = 0; i < playlist.data.length; i++) {
+              const song = playlist.data[i];
 
               const col = document.createElement("div");
-              col.className = "col";
+              col.className = "col-sm-6 col-md-4 col-lg-3";
 
-              col.innerHTML = `<div class="card" style="width: 18rem;">
-        <img src=${playlist.artist.picture} class="card-img-top" alt="...">
+              col.innerHTML = `<div class="card">
+        <img src=${song.album.cover} class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">${playlist.title}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">${song.title}</h5>
+          <p class="card-text">${song.artist.name}</p>
+          <a href="#" class="btn btn-primary">Play Now</a>
         </div>
       </div>`;
               grid.appendChild(col);
@@ -67,8 +69,41 @@
           .catch((err) => console.error(err));
       };
 
+      /*  const playlists2 = () => {
+        fetch(
+          "https://striveschool-api.herokuapp.com/api/deezer/search?q=pink%20floyd",
+          options2
+        )
+          .then((response) => response.json())
+          .then((playlist) => {
+            console.log(playlist);
+
+            const grid = document.querySelector(".container > .row");
+
+            for (let i = 0; i < playlist.data.length; i++) {
+              const song = playlist.data[i];
+
+              const col = document.createElement("div");
+              col.className = "col-sm-6 col-md-4 col-lg-3";
+
+              col.innerHTML = `<div class="card">
+        <img src=${song.album.cover} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${song.title}</h5>
+          <p class="card-text">${song.artist.name}</p>
+          <a href="#" class="btn btn-primary">Play Now</a>
+        </div>
+      </div>`;
+              grid.appendChild(col);
+            }
+          })
+          .catch((err) => console.error(err));
+      }; */
+
       window.onload = () => {
-        playlists();
+        const btn = document.querySelector("button");
+
+        btn.addEventListener("click", playlists);
       };
     </script>
   </body>
