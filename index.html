@@ -12,6 +12,7 @@
     />
     <title>Day-11 API's</title>
   </head>
+
   <body>
     <h1>Generate PlayLists</h1>
     <button class="btn btn-primary align-middle">Load Albums</button>
@@ -70,35 +71,35 @@
       };
 
       /*  const playlists2 = () => {
-        fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=pink%20floyd",
-          options2
-        )
-          .then((response) => response.json())
-          .then((playlist) => {
-            console.log(playlist);
-
-            const grid = document.querySelector(".container > .row");
-
-            for (let i = 0; i < playlist.data.length; i++) {
-              const song = playlist.data[i];
-
-              const col = document.createElement("div");
-              col.className = "col-sm-6 col-md-4 col-lg-3";
-
-              col.innerHTML = `<div class="card">
-        <img src=${song.album.cover} class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${song.title}</h5>
-          <p class="card-text">${song.artist.name}</p>
-          <a href="#" class="btn btn-primary">Play Now</a>
-        </div>
-      </div>`;
-              grid.appendChild(col);
-            }
-          })
-          .catch((err) => console.error(err));
-      }; */
+          fetch(
+            "https://striveschool-api.herokuapp.com/api/deezer/search?q=pink%20floyd",
+            options2
+          )
+            .then((response) => response.json())
+            .then((playlist) => {
+              console.log(playlist);
+  
+              const grid = document.querySelector(".container > .row");
+  
+              for (let i = 0; i < playlist.data.length; i++) {
+                const song = playlist.data[i];
+  
+                const col = document.createElement("div");
+                col.className = "col-sm-6 col-md-4 col-lg-3";
+  
+                col.innerHTML = `<div class="card">
+          <img src=${song.album.cover} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${song.title}</h5>
+            <p class="card-text">${song.artist.name}</p>
+            <a href="#" class="btn btn-primary">Play Now</a>
+          </div>
+        </div>`;
+                grid.appendChild(col);
+              }
+            })
+            .catch((err) => console.error(err));
+        }; */
 
       window.onload = () => {
         const btn = document.querySelector("button");
